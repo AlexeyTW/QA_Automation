@@ -3,12 +3,6 @@ from selenium import webdriver
 
 link = "http://selenium1py.pythonanywhere.com/"
 
-@pytest.fixture(scope='class')
-def browser():
-    browser = webdriver.Chrome()
-    yield browser
-    browser.quit()
-
 class TestMainPage1:
     @pytest.mark.smoke
     def test_guest_should_see_login_link(self, browser):
