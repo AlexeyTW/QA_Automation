@@ -1,4 +1,7 @@
-import time, math
-from selenium import webdriver
+def recur_fibo(n):  
+   if n <= 1:  
+       return n  
+   else:  
+       return(recur_fibo(n-1) + recur_fibo(n-2))
 
-print(str(math.log(int(time.time()))))
+print(recur_fibo(3))

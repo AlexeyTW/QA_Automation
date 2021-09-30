@@ -1,4 +1,4 @@
-import time
+import time, os
 
 import pytest
 from selenium import webdriver
