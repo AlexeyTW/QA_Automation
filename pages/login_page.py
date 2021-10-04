@@ -1,5 +1,6 @@
 from .locators import LoginPageLocators
 from .base_page import BasePage
+from selenium.webdriver.support import expected_conditions as EC
 
 
 
@@ -11,7 +12,7 @@ class LoginPage(BasePage):
 
     def should_be_login_url(self):
         # реализуйте проверку на корректный url адрес
-        assert self.browser.current_url == LoginPageLocators.VALID_URL
+        assert EC.url_contains(LoginPageLocators.LOGIN_SUBSTRING)
 
     def should_be_login_form(self):
         # реализуйте проверку, что есть форма логина
