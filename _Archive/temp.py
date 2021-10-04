@@ -1,3 +1,6 @@
+import json
+
+
 class Figure:
     def __init__(self, color):
         self.__color = color
@@ -58,10 +61,14 @@ class TestClass:
     def rev_line(self):
         return ''.join([i for i in reversed(self.line)])
 
+class MyCls:
 
-s = TestClass('test')
+    def __init__(self, num: int):
+        self.num = num
 
-s.line_to_reverse = 'erty'
+    def my_method(self, num1: int) -> int:
+        return self.num * num1
 
+x = MyCls(27)
 
-print(s.rev_line())
+print(x.my_method(3))

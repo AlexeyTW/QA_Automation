@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 /.idea
 /__pycache__
 /.pytest_cache/
 /_Archive/
+=======
+/.idea/workspace.xml
+/_Archive/geckodriver.log
+/.pytest_cache/
+>>>>>>> origin/main
