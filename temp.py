@@ -1,4 +1,7 @@
-import json
+from .pages.base_page import BasePage
+from .pages.main_page import MainPage
+from .pages.locators import PromoPagesLocators
+from .pages.product_page import PromoPage
 
 
 class Figure:
@@ -69,6 +72,6 @@ class MyCls:
     def my_method(self, num1: int) -> int:
         return self.num * num1
 
-x = MyCls(27)
+x = PromoPage(1)
 
-print(x.my_method(3))
+print(x)

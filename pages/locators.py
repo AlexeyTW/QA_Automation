@@ -11,5 +11,13 @@ class LoginPageLocators:
 
 
 class ProductPageLocators:
-    PRODUCT_LINK = 'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear'
+    PRODUCT_LINK = 'https://selenium1py.pythonanywhere.com/en-gb/catalogue/coders-at-work_207/?promo=newYear2019'
+    PRODUCT_NAME = (By.CSS_SELECTOR, ".product_page .row .product_main > h1")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
     ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, "button[class*='add-to-basket']")
+    PRODUCT_HAS_BEEN_ADDED_MESSAGE = (By.CSS_SELECTOR, "#messages div:nth-child(1) strong")
+    BASKET_PRICE = (By.XPATH, "//p[contains(text(), 'basket total')]/strong")
+
+class PromoPagesLocators:
+    PROMO_LINK = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer'
+
