@@ -1,6 +1,9 @@
 from selenium.webdriver import Chrome
 from selenium.common.exceptions import NoSuchElementException
 from .locators import BasePageLocators, MainPageLocators
+from selenium.common import exceptions
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage:
@@ -29,3 +32,16 @@ class BasePage:
     def go_to_basket(self):
         self.browser.find_element(*MainPageLocators.BASKET_BUTTON).click()
 
+    def is_not_element_present(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except exceptions.TimeoutException:
+            return True
+        return False
+
+    def is_disappeared(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout, 1, exceptions.TimeoutException).until_not(EC.presence_of_element_located((how, what)))
+        except TimeoutError:
+            return False
+        return True
