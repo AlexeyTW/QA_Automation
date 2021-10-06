@@ -1,6 +1,9 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators, PromoPagesLocators
 from selenium.common.exceptions import NoAlertPresentException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common import exceptions
 import math
 
 class ProductPage(BasePage):
@@ -9,11 +12,11 @@ class ProductPage(BasePage):
         product_link = self.browser.find_element(*ProductPageLocators.PRODUCT_LINK)
         product_link.click()
 
-    def get_product_name(self):
-        return self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
+    def get_product_name(self, product_name):
+        return self.browser.find_element(*product_name).text
 
-    def get_product_price(self):
-        return self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+    def get_product_price(self, product_price):
+        return self.browser.find_element(*product_price).text
 
     def add_to_cart(self):
         add_to_cart_button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON)
@@ -33,8 +36,22 @@ class ProductPage(BasePage):
         except NoAlertPresentException:
             print('You must have the second alert present')
 
-    def get_name_of_added_item(self):
-        return self.browser.find_element(*ProductPageLocators.PRODUCT_HAS_BEEN_ADDED_MESSAGE).text
+    def get_name_of_added_item(self, added_item):
+        return self.browser.find_element(*added_item).text
 
-    def get_price_of_basket(self):
-        return self.browser.find_element(*ProductPageLocators.BASKET_PRICE).text
+    def get_price_of_basket(self, basket_price):
+        return self.browser.find_element(*basket_price).text
+
+    def is_not_element_present(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except exceptions.TimeoutException:
+            return True
+        return False
+
+    def is_disappeared(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout, 1, exceptions.TimeoutException).until_not(EC.presence_of_element_located((how, what)))
+        except TimeoutError:
+            return False
+        return True
