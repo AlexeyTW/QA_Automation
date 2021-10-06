@@ -1,6 +1,6 @@
 from selenium.webdriver import Chrome
 from selenium.common.exceptions import NoSuchElementException
-from .locators import BasePageLocators
+from .locators import BasePageLocators, MainPageLocators
 
 
 class BasePage:
@@ -25,3 +25,7 @@ class BasePage:
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), 'Login link is not present'
+
+    def go_to_basket(self):
+        self.browser.find_element(*MainPageLocators.BASKET_BUTTON).click()
+

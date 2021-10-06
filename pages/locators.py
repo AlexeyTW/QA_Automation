@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    MAIN_PAGE_LINK = 'http://selenium1py.pythonanywhere.com'
+    BASKET_BUTTON = (By.XPATH, "//a[text()='View basket']")
 
 
 class LoginPageLocators:
@@ -24,4 +26,7 @@ class PromoPagesLocators:
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    ANY_PRODUCT_IN_THE_BASKET = (By.XPATH, "//h2[text()='Items to buy now']")
+    BASKET_IS_EMPTY = (By.CSS_SELECTOR, "#content_inner > p")
+
 
