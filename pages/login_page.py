@@ -3,6 +3,7 @@ import pytest
 from .locators import LoginPageLocators, BasePageLocators
 from .base_page import BasePage
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoAlertPresentException
 
 
 
@@ -31,3 +32,11 @@ class LoginPage(BasePage):
         self.browser.find_element(*LoginPageLocators.FIELD_EMAIL).send_keys(email)
         self.browser.find_element(*LoginPageLocators.FIELD_PASSWORD).send_keys(password)
         self.browser.find_element(*LoginPageLocators.FIELD_PASSWORD_REPEATED).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.BUTTON_REGISTER).click()
+        assert not self.is_not_element_present(*BasePageLocators.USER_ICON), 'User icon is not present. Check registration'
+        try:
+            alert = self.browser.switch_to.alert
+            alert.dismiss()
+        except NoAlertPresentException:
+            pass
+

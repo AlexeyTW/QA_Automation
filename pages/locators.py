@@ -13,7 +13,7 @@ class LoginPageLocators:
     FIELD_EMAIL = (By.ID, 'id_registration-email')
     FIELD_PASSWORD = (By.ID, 'id_registration-password1')
     FIELD_PASSWORD_REPEATED = (By.ID, 'id_registration-password2')
-    BUTTON_REGISTER = (By.ID, 'button[name*="registration"]')
+    BUTTON_REGISTER = (By.CSS_SELECTOR, 'button[name*="registration"]')
 
 
 class ProductPageLocators:

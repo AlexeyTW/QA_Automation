@@ -45,3 +45,6 @@ class BasePage:
         except TimeoutError:
             return False
         return True
+
+    def should_be_authorized_user(self):
+        assert self.browser.find_element(*BasePageLocators.USER_ICON), 'User icon is not present'
