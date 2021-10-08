@@ -1,7 +1,7 @@
-from .pages.base_page import BasePage
-from .pages.main_page import MainPage
-from .pages.locators import PromoPagesLocators
-from .pages.product_page import PromoPage
+from pages.base_page import BasePage
+from pages.main_page import MainPage
+from pages.locators import PromoPagesLocators
+from pages.product_page import PromoPage
 
 
 class Figure:
