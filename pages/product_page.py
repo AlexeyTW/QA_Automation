@@ -41,3 +41,6 @@ class ProductPage(BasePage):
 
     def get_price_of_basket(self, basket_price):
         return self.browser.find_element(*basket_price).text
+
+    def check_equality_of_values(self, item1, item2):
+        assert item1 == item2
