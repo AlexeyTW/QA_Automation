@@ -67,7 +67,7 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
 class TestUserAddToBasketFromProductPage:
 
     @pytest.fixture(scope='function', autouse=True)
-    def test_register_user(self, browser):
+    def setup(self, browser):
         link = MainPageLocators.MAIN_PAGE_LINK
         page = LoginPage(browser, link)
         page.open()
