@@ -6,6 +6,7 @@ from .pages.product_page import ProductPage, ProductPageLocators, PromoPagesLoca
 from .pages.locators import BasePageLocators, MainPageLocators
 import time, pytest, random
 
+
 @pytest.mark.need_review
 @pytest.mark.parametrize('promo_num', [0, 1, 2, 3, 4, 5, 6,
                                        pytest.param('bugged promo number', marks=pytest.mark.xfail(reason='This is the bugged promo page. Text is xpassed')),
@@ -23,6 +24,7 @@ def test_guest_can_add_product_to_basket(browser, promo_num):
     basket_price = page.get_price_of_basket(ProductPageLocators.BASKET_PRICE)
     page.check_equality_of_values(product_price, basket_price)
 
+
 @pytest.mark.xfail(reason='This test should be xfailed because guest can see success message after adding item to the cart')
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page = ProductPage(browser, ProductPageLocators.PRODUCT_LINK)
@@ -30,6 +32,7 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page.add_to_cart()
     page.solve_alert_task()
     page.check_object_not_present(ProductPageLocators.PRODUCT_HAS_BEEN_ADDED_MESSAGE)
+
 
 @pytest.mark.xfail(reason='This test should be xfailed')
 def test_message_disappeared_after_adding_product_to_basket(browser):
@@ -39,11 +42,13 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page.solve_alert_task()
     page.check_object_not_present(ProductPageLocators.PRODUCT_HAS_BEEN_ADDED_MESSAGE)
 
+
 def test_guest_should_see_login_link_on_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = MainPage(browser, link)
     page.open()
     page.should_be_login_link()
+
 
 @pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
@@ -51,6 +56,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
     page.should_be_login_link()
+
 
 @pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
